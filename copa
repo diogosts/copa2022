@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <style media="screen">
+    *{
+        box-sizing: border-box;
+    }
+    html,
+    body{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    body {
+        margin:0;
+        padding: 0;        
+        background-image: url("https://i.ibb.co/pxzHBBh/Ronaldinho-Ga-cho.jpg");
+        background-size:cover;
+        position: relative;
+    }
+    #timer {
+        font-size: 3em;
+        color: #fff;
+        font-family: Arial;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        margin: auto;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    #timer div {
+        display: inline-block;
+        text-align: center;
+        min-width: 115px;
+        padding: 15px;
+        background: #00962D;
+        border-radius: 10px;
+        border: 2px solid rgba(255,255,255,.2);
+        margin: 15px;
+        letter-spacing: -2px;
+    }
+    #timer div span {
+        color: #FFF156;
+        display: block;
+        margin-top: 15px;
+        font-size: .35em;
+        letter-spacing: 0;
+    }
+</style>
+</head>
+<body>
+
+    <div id="timer"></div>
+    <script type="text/javascript">
+        function updateTimer() {
+            future = Date.parse("nov 24, 2022 16:00:00");
+            now = new Date();
+            diff = future - now;
+
+            days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            hours = Math.floor(diff / (1000 * 60 * 60));
+            mins = Math.floor(diff / (1000 * 60));
+            secs = Math.floor(diff / 1000);
+
+            d = days;
+            h = hours - days * 24;
+            m = mins - hours * 60;
+            s = secs - mins * 60;
+
+            document.getElementById("timer")
+            .innerHTML =
+            '<div><strong>' + d + '</strong><span>Days</span></div>' +
+            '<div><strong>' + h + '</strong><span>Hours</span></div>' +
+            '<div><strong>' + m + '</strong><span>Minutes</span></div>' +
+            '<div><strong>' + s + '</strong><span>Seconds</span></div>';
+        }
+        setInterval('updateTimer()', 1000);
+    </script>
+</body>
+</html>
